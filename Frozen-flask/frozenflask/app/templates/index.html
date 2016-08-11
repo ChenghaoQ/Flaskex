@@ -1,13 +1,24 @@
-{% extends "base.html" %}
-{% block content %}
-
-<h2>Posts</h2>
-
-<ul class="page-list">
-  {% for page in pages %}
-      <li><a href="{{ url_for('page', path=page.path) }}">
-          {{ page.meta.title }}
-      </a>- {{ page.meta.date }}</li>
-  {% endfor %}
-</ul>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href='static/css/index.css'>
+</head>
+<body>
+    
+        <div class="wrapper">
+           <div class="mask">
+            <div class="logo"></div>
+            <div class="heading">
+                
+                <h1>老钱</h1>
+                
+            </div>
+            <div class="loading"></div>
+            </div>
+        </div>
+    <script src="static/js/jquery.js"></script>
+        <script src='static/js/index.js'></script>
+</body>
+</html>

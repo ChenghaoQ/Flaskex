@@ -1,0 +1,36 @@
+#sidebar,#sidebar-trigger,.content,footer,.back-to-top
+{
+    display:none;
+}
+body
+{
+    margin:0;
+}
+#main-page nav
+{
+    height:40px;
+    width:inherit;
+    background:#d1ccbc;
+}
+#main-page nav ul
+{
+    list-style: none;
+    width:inherit;
+    margin:0; 
+    padding:0;
+    display:none;
+}
+#main-page nav ul li
+{
+    height:40px;
+    border:1px solid #333;
+}
+
+#main-page nav .logo 
+{
+    
+    height:inherit;
+    width:inherit;
+    text-align:center;
+    padding:0 auto;
+}
