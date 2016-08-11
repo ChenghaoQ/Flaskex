@@ -21,7 +21,8 @@
             <header>
                 <nav>
                     <div class="logo"><a href="#">老钱</a></div>
-                    <ul>
+                    <button class="menu_trigger">☰</button>
+                    <ul class="menu">
                         
                         <li><a href='../index.html'>首页</a></li>    
                         <li><a href='#'>文章</a></li> 
@@ -53,7 +54,6 @@
 
 </ul>
 
-
                 </div>
     
             </div>
@@ -72,8 +72,8 @@
 
             </footer>
         
-            <button id="sidebar-trigger">◀</button>
-            <button class="back-to-top">▲</button>
+            <button id="sidebar-trigger">➤</button>
+            <button class="back-to-top">➜</button>
 
         
         </div>
@@ -96,8 +96,12 @@
         
         </div>
         </div>
-        <script src="../static/js/jquery.js"></script>
-        <script src="../static/js/home.js"></script>
+        
+        <script src="static/js/jquery.js"></script>
+        <script media="screen and (min-width:1024px)" src="static/js/home.js"></script>
+        <script media="screen and (max-width:1024px)" src="static/ijs/ihome.js"></script>
+
+
     </body>
 
 

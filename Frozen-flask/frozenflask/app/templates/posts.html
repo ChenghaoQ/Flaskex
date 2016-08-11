@@ -6,6 +6,7 @@
 <link rel='stylesheet' media="screen and (max-width:1024px)"  href='static/icss/ihomepage.css'>
 <link rel='stylesheet' media="screen and (max-width:1024px)"  href='static/icss/iposts.css'>
 {% endblock %}
+
 {% block content %}
 <ul class="post_list">
     {% for page in pages %}
@@ -19,5 +20,11 @@
 </li>
 {% endfor %}
 </ul>
+{% endblock %}
 
+
+{% block js %}
+        <script src="static/js/jquery.js"></script>
+        <script media="screen and (min-width:1024px)" src="static/js/home.js"></script>
+        <script media="screen and (max-width:1024px)" src="static/ijs/ihome.js"></script>
 {% endblock %}
