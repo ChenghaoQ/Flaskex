@@ -4,6 +4,7 @@
     var menu = $('.menu'),
         backbutton=$('.back-to-top'),
         menu_trigger = $('.menu_trigger'),
+        mask = $('.mask'),
         sidebar =$('#sidebar'),
         sidebar_trigger = $('#sidebar-trigger');
         
@@ -30,24 +31,15 @@
         sidebar.css('left',0);
         /*main_page.css('margin-left',sidebar.width());*/
         
-        sidebar_trigger.text("➤");
+        mask.fadeIn(600);
     }
     function hideSideBar()
     {
         sidebar.css('left',-sidebar.width());
         
-        sidebar_trigger.text("☰");
+        mask.fadeOut(600);
     }
-    function showhideSideBar()
-    {
-            if(sidebar.css('left')=='0px')
-                hideSideBar();
-            else  
-                showSideBar();
-    }
-    
-    
-    
+
     
     
     
@@ -59,7 +51,8 @@
         if($(window).width()<1024){
             menu_trigger.click(function(){menu.slideToggle()});
             $(function(){setTimeout(hideSideBar,1000)});
-            sidebar_trigger.on('click',showhideSideBar);
+            sidebar_trigger.on('click',showSideBar);
+            mask.on('click',hideSideBar);
             backbutton.on('click',backback);
             $(window).on('scroll',hidebutton);
             $(window).trigger('scroll');
