@@ -63,7 +63,7 @@ body
 }
 #main-page
 {
-    margin-left:260px;
+    margin-left:0px;
     transition:left 0.6s;
     min-height:100%;
 }
