@@ -4,7 +4,7 @@
     var sidebar =$('#sidebar'),
         sidebar_trigger = $('#sidebar-trigger'),
         backbutton=$('.back-to-top'),
-        sidebar_item = $('#sdiebar>ul>li'),
+        sidebar_item = $('#sidebar>ul>li'),
         main_page=$('#main-page');
     function backback()
     {
