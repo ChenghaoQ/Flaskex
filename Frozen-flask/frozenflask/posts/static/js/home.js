@@ -4,6 +4,7 @@
     var sidebar =$('#sidebar'),
         sidebar_trigger = $('#sidebar-trigger'),
         backbutton=$('.back-to-top'),
+        sidebar_item = $('#sdiebar>ul>li'),
         main_page=$('#main-page');
     function backback()
     {
@@ -47,6 +48,7 @@
             backbutton.on('click',backback);
             $(window).on('scroll',hidebutton);
             $(window).trigger('scroll');
+            sidebar_item.on('click',hideSideBar);
         }
     })
         
