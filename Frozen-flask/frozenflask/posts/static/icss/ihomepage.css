@@ -77,13 +77,16 @@ body
     margin-left:0px;
     transition:left 0.6s;
     min-height:100%;
+    
 }
 #main-page nav
 {
     min-height:40px;
-    width:inherit;
+    width:100%;
     background:#f5ece1;
     border-bottom:1px solid #333;
+    position: fixed;
+    
 }
 #main-page nav ul
 {
@@ -93,6 +96,7 @@ body
     padding:0;
     display: none;
     text-align: center;
+    
 }
 #main-page nav ul li
 {
@@ -137,6 +141,10 @@ body
     color:#555;
     font-size:25px;
     border:none;
+}
+.content_wrapper
+{
+    margin-top: 40px;
 }
 .back-to-top
 {
