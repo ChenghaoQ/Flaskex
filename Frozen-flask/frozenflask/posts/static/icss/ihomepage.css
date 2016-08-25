@@ -29,11 +29,10 @@
 }
 #sidebar ul a
 {
-    padding: 12px 0 12px 12px;
+    padding:12px;
     display:inline-block;
     text-decoration: none;
     color:white;
-    width:100%;
 }
 #sidebar ul li:hover
 {
@@ -44,17 +43,31 @@
     float:left;
     display: inline-block;
     position:fixed;
-    right:5px;
-    bottom:5px;
-    width:32px;
-    height:32px;
+    left:2px;
+    top:2px;
+    width:36px;
+    height:36px;
+    background:inherit;
+    color:#555;
     border:none;
     font-size:25px;
     border-radius:5px;
-    background:#f5ece1;
-    color:#d46930;
 }
-
+#sidebar-trigger
+{
+    float:left;
+    display: inline-block;
+    position:absolute;
+    left:2px;
+    top:2px;
+    width:36px;
+    height:36px;
+    background:inherit;
+    color:#555;
+    border:none;
+    font-size:25px;
+    border-radius:5px;
+}
 body
 {
     margin:0;
@@ -64,15 +77,16 @@ body
     margin-left:0px;
     transition:left 0.6s;
     min-height:100%;
+    
 }
 #main-page nav
 {
-
     min-height:40px;
     width:100%;
     background:#f5ece1;
     border-bottom:1px solid #333;
-    top:0;
+    position: fixed;
+    
 }
 #main-page nav ul
 {
@@ -82,6 +96,7 @@ body
     padding:0;
     display: none;
     text-align: center;
+    
 }
 #main-page nav ul li
 {
@@ -127,15 +142,19 @@ body
     font-size:25px;
     border:none;
 }
+.content_wrapper
+{
+    margin-top: 40px;
+}
 .back-to-top
 {
     background:#f5ece1;
     position:fixed;
-    bottom:37px;
+    bottom:5px;
     right:5px;
-    height:32px;
-    width:32px;
-    font-size:20px;
+    height:25px;
+    width:25px;
+    font-size:18px;
     border:1px solid #888;
     color:#d46930;
     padding:0 2px;
