@@ -41,19 +41,19 @@
 }
 #sidebar-trigger
 {
-    float:left;
-    display: inline-block;
+    background:inherit;
     position:fixed;
-    right:5px;
     bottom:5px;
-    width:32px;
+    right:5px;
     height:32px;
+    width:32px;
+    font-size:20px;
     border:none;
-    font-size:25px;
-    border-radius:5px;
-    background:#f5ece1;
     color:#d46930;
-    border:1px solid #888;
+    padding:0 2px;
+    font-weight:800;
+    
+    
 }
 
 body
@@ -128,19 +128,19 @@ body
 }
 .back-to-top
 {
-    background:#f5ece1;
+    background:inherit;
     position:fixed;
     bottom:37px;
     right:5px;
     height:32px;
     width:32px;
     font-size:20px;
-    border:1px solid #888;
+    border:none;
     color:#d46930;
     padding:0 2px;
     font-weight:800;
     transform: rotate(-90deg);
-    border-radius:5px;
+    
 }
 footer
 {
