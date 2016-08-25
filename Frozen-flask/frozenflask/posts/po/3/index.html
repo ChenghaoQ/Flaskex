@@ -41,33 +41,11 @@
     <div class="article_header">
         <h1 class="article_title"><a>Frozen-Flask说明（待续）</a></h1>
                         
-		<div class="article_info">2016-08-15 11:21:05</div>
+		<div class="article_info">2016-08-21 20:21:05</div>
 	</div>
 	<article>
 		Frozen-Flask（原名Flask-Static)是一个基于[Flask]()的Static(静态)网页生成器。它可以轻松地冻结你现在已有的Flask项目，生成一系列的静态网页（例如：静态博客),然后直接搭载在HTTP服务器上而不需要安装其他的软件。相对于动态网页，Frozen-Flask生成的网站更易于托管，比如Github-Pages或Coding-Pages上面。同时当你的网站足够庞大以至于静态网页不能满足你的需求时，与其他静态网页生成器相比，基于Flask的Frozen-Flask可以让你的网站更快捷地迁移到动态的Flask上面。本文带你进一步了解这个神奇的工具。
-		<p>sidebar:
-- value:
-    title: 安装
-    id: 1
-- value:
-    title: 上下文
-    id: 2
-- value:
-    title: 开始吧
-    id: 3
-- value:
-    title: URL生成器
-    id: 4
-- value:
-    title: 测试URL生成器
-    id: 5
-- value:
-    title: 配置
-    id: 6
-- value:
-    title: 文件名和MIME类型
-    id: 7</p>
-<p>（翻译自官方文档，英文版请点击<a href="http://pythonhosted.org/Frozen-Flask/#flask_frozen.relative_url_for">这里</a></p>
+		<p>（翻译自官方文档，英文版请点击<a href="http://pythonhosted.org/Frozen-Flask/#flask_frozen.relative_url_for">这里</a></p>
 <h2><a name='1'>安装</a></h2>
 <p>通过以下其中一个安装本扩展</p>
 <div class="codehilite"><pre><span></span>$ easy_install Frozen-Flask
@@ -223,7 +201,78 @@ def product_url_generator():
 <p>如果设置为True（默认False），Frozen-Flask不会在遇到404错误返回时停止你的应用。在这种情况下，会有一个警告会被显示并且会使用你的404错误处理器或Flask默认设置来生成一个404错误网页。这项功能在你开发过程中网页链接到还没有写的网页时很有用。（0.12版更新）</p>
 </blockquote>
 <h2><a name='7'>文件名和MIME类型</a></h2>
-<p>对于每一个URL，Frozen-Flask模拟一个请求并且将内容保存在FREEZER_DESTINATION 下的文件夹内。文件名字是根据URL地址来定的。URL有一个尾斜杠来表示一个文件夹名，内容存放于该文件夹下index.html下.....</p>
+<p>对于每一个URL，Frozen-Flask模拟一个请求并且将内容保存在FREEZER_DESTINATION 下的文件夹内。文件名字是根据URL地址来定的。URL有一个尾斜杠来表示一个文件夹名，内容存放于该文件夹下index.html下.</p>
+<p>被从URL里面移除的查询字符串用来建立文件名字。例如/lorem/?page=ipsum被保存为lorem/index.html. URL只有在它们的查询字符串相同时不同。它们应该返回相同的结果，否则，行为会被当做未定义行为。</p>
+<p>另外，扩展检查了文件扩展名是否与Content-Type HTTP response header提供的MIME类型相匹配，Content-Type是一个静态web服务器可能会传送不是你期望的内容，这样Frozen-flask回发出警告</p>
+<p>比如，下列的views 都是错的</p>
+<div class="codehilite"><pre><span></span>@app.route(&#39;/lipsum&#39;)
+def lipsum():
+    return &#39;<span class="nt">&lt;p&gt;</span>Lorem ipsum, ...<span class="nt">&lt;/p&gt;</span>&#39;
+
+@app.route(&#39;/style.css&#39;)
+def compressed_css():
+    return &#39;/* ... */&#39;
+</pre></div>
+
+
+<p>作为结果Flask的Content-Type是text/html; charset=utf-8,但是Frozen-Flask和大多说web服务器通过文件名得到的MIME类型是application/octet-stream 和 text/css</p>
+<p>上述代码可以这样通过添加URL的尾斜杠或者添加Content-Type</p>
+<div class="codehilite"><pre><span></span># Saved as `lipsum/index.html` matches the &#39;text/html&#39; MIME type.
+@app.route(&#39;/lipsum/&#39;)
+def lipsum():
+    return &#39;<span class="nt">&lt;p&gt;</span>Lorem ipsum, ...<span class="nt">&lt;/p&gt;</span>&#39;
+
+@app.route(&#39;/style.css&#39;)
+def compressed_css():
+    return &#39;/* ... */&#39;, 200, {&#39;Content-Type&#39;: &#39;text/css; charset=utf-8&#39;}
+</pre></div>
+
+
+<p>你也可以通过<a href="">配置</a>来禁用。</p>
+<h2><a name='8'>字符编码</a></h2>
+<p>Flask内部使用Unicode，默认是UTF8来进行I/O操作.它会把一个MIME类型和编码方式发送到正确的Content-Type header。Frozen-Flask会尝试通过文件扩展名<a href="#7">保存MIME类型</a>，但是它不能保护编码元数据。你可能需要添加正确的<meta>标签到你的HTML。</p>
+<p>对于URL，Flask的默认也是UTF8编码，所以你的web服务器会得到URL-encoded UTF-8 HTTP 请求。由你来转换这些到你的文件系统默认编码。Frozen-Flask总是使用Unicode描写文件名。</p>
+<h2><a name='9'>API</a></h2>
+<p>class flask_frozen.Freezer(app=None, with_static_files=True,with_no_argument_rules=True, log_url_for=True)</p>
+<blockquote>
+<p><strong>参数</strong>：
+        - app(Flask实例):你的应用程序或者None如果你使用了init_app()
+        - with_static_files (boolean)是否自动为静态文件生成Url地址
+        -with_no_argument_rules (boolean)是否对那些没有参数的log_url_for (boolean)URL规则去自动生成URL
+        -log_url_for (boolean)： 是否去log调用你的appmakes to url_for()并且通过它来生成URLs。</p>
+<p><strong>all_urls()</strong>
+        运行所有的生成器并生成相关与app根目录的URL地址对测试URL生成器非常有帮助</p>
+</blockquote>
+<div class="codehilite"><pre><span></span><span class="n">Note</span><span class="o">:</span>
+<span class="n">This</span> <span class="n">does</span> <span class="n">not</span> <span class="n">generate</span> <span class="n">any</span> <span class="n">page</span><span class="o">,</span> <span class="n">so</span> <span class="n">URLs</span> <span class="n">that</span> <span class="n">are</span> <span class="n">normally</span> <span class="n">generated</span> <span class="n">from</span> <span class="n">url_for</span><span class="o">()</span> <span class="n">calls</span> <span class="n">will</span> <span class="n">not</span> <span class="n">be</span> <span class="n">included</span> <span class="n">here</span><span class="o">.</span>
+</pre></div>
+
+
+<blockquote>
+<p><strong>freeze()</strong>
+    清除目标目录并通过生成器建立所有地址</p>
+<p><strong>init_app(app)</strong>
+    允许在Freezer初始化后注册一个app
+    参数： app： 你的Flask应用</p>
+<p><strong>register_generator(function)</strong>
+    注册一个函数为URL生成器
+    这个函数应该返回一个可迭代的URL路径或者(endpoint, values) 元组 to be used as url_for(endpoint, **values).</p>
+<p><strong>root</strong>
+    Frozen-Flask写入文件的绝对路径：resolved value for the FREEZER_DESTINATION <a href="">configuration</a>.</p>
+<p><strong>run（＊＊options)</strong>
+    和serve()一样但是需要先冻结（调用freeze())</p>
+</blockquote>
+<p>flask_frozen.walk_directory(root, ignore=())
+    递归逐层进入根目录并且生成用'/'分割的相对路径。
+    之前被用来执行静态文件的URL生成器
+    参数：ignore: 一列fnmatch样式,用法类似.gitignore,   patterns that contains a slash are matched against the whole path, others against individual slash-separated parts.</p>
+<p>flask_frozen.relative_url_for(endpoint, **values)
+    类似于<a href="">url_for()</a>，但是在可能的情况下返回相关的URL</p>
+<div class="codehilite"><pre><span></span>绝对URL(with _external=True or to a different subdomain)是不变的，但是/foo/bar 变成../bar,依赖于
+当前请求的上下文路径(This, of course, requires a Flask request context.)
+
+URLs 否则也会以 &#39;/&#39;结束。。。
+</pre></div>
 	</article>
 
                 </div>
@@ -261,15 +310,31 @@ def product_url_generator():
             
 	<ul>
 	
+		<li><a href='#1'>安装</a></li>
+	
+		<li><a href='#2'>上下文</a></li>
+	
+		<li><a href='#3'>开始吧</a></li>
+	
+		<li><a href='#4'>URL生成器</a></li>
+	
+		<li><a href='#5'>测试URL生成器</a></li>
+	
+		<li><a href='#6'>配置</a></li>
+	
+		<li><a href='#7'>文件名和MIME类型</a></li>
+	
+		<li><a href='#8'>字符编码</a></li>
+	
 	</ul>
 
-            <ul>
+            <!--<ul>
                 <li><a href='#'>item</a></li>
                 <li><a href='#'>item</a></li>
                 <li><a href='#'>item</a></li>
                 <li><a href='#'>item</a></li>
                 <li><a href='#'>item</a></li>
-            </ul>
+            </ul>-->
         
         </div>
         </div>
