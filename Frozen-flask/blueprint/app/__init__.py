@@ -17,7 +17,7 @@ from .views.article import article
 app = Flask(__name__)
 #注册蓝图
 app.register_blueprint(index)
-#app.register_blueprint(postwall)
+app.register_blueprint(postwall)
 app.register_blueprint(article)
 #load the settings from .py file
 app.config.from_pyfile('settings.py')
