@@ -174,26 +174,27 @@ pages.get(&#39;foo&#39;) # Force loading now. foo.html may not even exist.
 <p>一个page实例集合</p>
 <p>范例：</p>
 </blockquote>
-<div class="codehilite"><pre><span></span>pages = FlatPages(app)
-
-@app.route(&#39;/&#39;)
-def index():
-
-    //Articles are pages with a publication date
-    articles = (p for p in pages if &#39;published&#39; in p.meta)
-    // Show the 10 most recent articles, most recent first.
-    latest = sorted(articles, reverse=True,key=lambda p: p.meta[&#39;published&#39;])
-    return render_template(&#39;articles.html&#39;, articles=latest[:10])
-
-@app.route(&#39;/&lt;path:path&gt;/&#39;)
-def page(path):
-
-    page = pages.get_or_404(path)
-    template = page.meta.get(&#39;template&#39;, &#39;flatpage.html&#39;)
-    return render_template(template, page=page)
+<p>```python
+pages = FlatPages(app)</p>
+<p>@app.route('/')
+def index():</p>
+<div class="codehilite"><pre><span></span>//Articles are pages with a publication date
+articles = (p for p in pages if &#39;published&#39; in p.meta)
+// Show the 10 most recent articles, most recent first.
+latest = sorted(articles, reverse=True,key=lambda p: p.meta[&#39;published&#39;])
+return render_template(&#39;articles.html&#39;, articles=latest[:10])
 </pre></div>
 
 
+<p>@app.route('/<path:path>/')
+def page(path):</p>
+<div class="codehilite"><pre><span></span>page = pages.get_or_404(path)
+template = page.meta.get(&#39;template&#39;, &#39;flatpage.html&#39;)
+return render_template(template, page=page)
+</pre></div>
+
+
+<p>```</p>
 <blockquote>
 <p><strong>__iter__()</strong>
         对所有Page实例进行迭代</p>
@@ -219,11 +220,9 @@ published: 2010-12-22
 Hello, *World*!
 
 Lorem ipsum dolor sit amet, …
-</pre></div>
 
 
-<p>以上为test.md </p>
-<div class="codehilite"><pre><span></span>&gt;&gt;&gt; page = pages.get(&#39;hello&#39;)
+&gt;&gt;&gt; page = pages.get(&#39;hello&#39;)
 &gt;&gt;&gt; page.meta # PyYAML converts YYYY-MM-DD to a date object
 {&#39;title&#39;: u&#39;Hello&#39;, &#39;published&#39;: datetime.date(2010, 12, 22)}
 &gt;&gt;&gt; page[&#39;title&#39;]
@@ -257,10 +256,7 @@ u&#39;<span class="nt">&lt;p&gt;</span>Hello, <span class="nt">&lt;em&gt;</span>
 - Returns: <a href="http://freewisdom.org/projects/python-markdown/CodeHilite">CodeHilite</a>Markdown插件的CSS定义
 - 参数： style - Pygments <a href="http://pygments.org/docs/styles/">style</a> 样式
 - 只有当<a href="http://pygments.org/">Pygments</a>可用的时候</p>
-<p><code>ruby
-require 'redcarpet'
-markdown = Redcarpet.new("Hello World!")
-puts markdown.to_html</code></p>
+<p>转载请注明出处</p>
 	</article>
 
                 </div>

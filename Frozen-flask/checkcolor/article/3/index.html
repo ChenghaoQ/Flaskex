@@ -51,7 +51,7 @@
                 <div class="content_wrapper">
                     
     <div class="article_header">
-        <h1 class="article_title"><a>Frozen-Flask说明</a></h1>                   
+        <h1 class="article_title"><a>Frozen-Flask说明（待续）</a></h1>                   
 		<div class="article_info">2016-08-23 | <a class = 'tag' href="None">Flask</a></div>
 	</div>
 	<article>
@@ -167,7 +167,7 @@ def product_url_generator():
 <p>Frozen Flask 背后的点子是你<a href="#2"><strong>可以直接使用Flask</strong></a>来开发并测试你的应用。况且在部署在服务器之前，非常有必要来测试你的URL生成器，以免有内容丢失。</p>
 <p>你可以在浏览器打开新生成的静态HTML文件，但是链接可能不能使用。FREEZER_RELATIVE_URLS<a href="">设置</a>可以修复这个问题，但是添加一个可见的index.html到链接。或者使用[run()]方法来使用生成的网页来大件一个HTTP服务器。这样一来你就可以在上传之前确认是否工作正常：</p>
 <div class="codehilite"><pre><span></span>if __name__ == &#39;__main__&#39;:
-    freezer.run(debug)
+    freezer.run(debug=True)
 </pre></div>
 
 
