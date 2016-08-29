@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template
-
+from app import articles
 postwall = Blueprint('postwall',__name__)
 
 @postwall.route('/posts.html')

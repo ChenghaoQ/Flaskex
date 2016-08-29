@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template
-
+from app import articles
 article = Blueprint('article',__name__)
 
 @article.route('/article/<path:path>/')

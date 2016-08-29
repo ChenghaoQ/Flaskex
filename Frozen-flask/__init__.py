@@ -3,8 +3,17 @@ from flask_flatpages import FlatPages
 from flask_frozen import Freezer
 
 
-#init the flask
+
+
+
+
+
+
+
+
+#初始化 flask
 app = Flask(__name__)
+
 
 #load the settings from .py file
 app.config.from_pyfile('settings.py')
@@ -14,13 +23,11 @@ articles = FlatPages(app) #FlatPages use 'app' as arguments
 freezer = Freezer(app)
 
 #after initialize import views
-#from app import views
-
-from .view.index import index
-from .view.postwall import postwall
-from .view.article import article
-
+"""from app import views1
+from .views.index import index
+from .views.postwall import postwall
+from .views.article import article
 #注册蓝图
 app.register_blueprint(index)
 app.register_blueprint(postwall)
-app.register_blueprint(article)
+app.register_blueprint(article)""" 
