@@ -73,7 +73,19 @@
         
         
         <div id='sidebar'>
-            {% block sidebar %}{% endblock %}
+			<div class="sidebar_inner">
+				<div class = "sidebar_tags">
+					<ul>
+						<li><a href='#'>item</a></li>
+						<li><a href='#'>item2</a></li>
+					</ul>
+			
+				</div>
+				<div class="sidebar_content">
+            	{% block sidebar %}{% endblock %}
+				</div>
+				<div class="more_info"></div>
+			</div>
             <!--<ul>
                 <li><a href='#'>item</a></li>
                 <li><a href='#'>item</a></li>
