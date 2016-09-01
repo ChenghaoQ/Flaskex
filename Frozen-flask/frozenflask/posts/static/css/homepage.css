@@ -16,26 +16,7 @@ body
     transition:left 0.7s;
 
 }
-.sidebar_inner
-{
-	height: inherit;
-	position:relative;
 
-}
-.sidebar_tags ul
-{
-	text-align: center;
-	padding:0;
-	margin: 30px 0;
-}
-.sidebar_tags ul li
-{
-	display:inline-block;
-}
-.sidebar_tags ul li a
-{
-	padding:10px 25px;
-}
 #sidebar .sidebar_content ul
 {
     list-style: none;
@@ -189,4 +170,16 @@ footer .share-group li a
     margin:0 auto;
     margin-top:30px;
     padding-bottom:20px;
+}
+
+.codehilite
+{
+    overflow: scroll;
+    border-radius: 10px;
+}
+.codehilite pre
+{
+    border-radius: 10px;
+    padding-left:15px;
+    width:inherit;
 }
