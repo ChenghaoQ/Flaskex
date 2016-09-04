@@ -53,24 +53,80 @@ body
     cursor:pointer;
     
 }
-#sidebar-content .nav-content
+#sidebar-content, nav-content
 {
     position:fixed;
     width:210px;
-    min-height: 100%;
-    z-index: 99;
-    background: #222;
+	height: 100%;
     border:1px solid black;
-    margin-left:50px;
+    left:50px;
+	z-index: 99;
+	background: #222;
 
 }
-#sidebar-content .nav-con-close
+
+idebar-content .nav-con-close
 {
     position:absolute;
     top:5px;
     right:5px;
     cursor:pointer;
 }
+
+.hide-sidebar-menu
+{
+	animation-name: hide-sidebar-menu;
+	animation-duration: 1s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+}
+@keyframes hide-sidebar-menu
+{
+	from{}
+	to
+	{
+		transform : translateX(-50px);
+	}
+}
+.hide-back
+{
+	animation-name: hide-back;
+	animation-duration: 0.5s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+}
+@keyframes hide-back
+{
+	from{}
+	to
+	{
+		transform : translateX(-210px);
+	}
+}
+.hide-back-again
+{
+	animation-name: hide-back-again;
+	animation-duration: 0.5s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+}
+@keyframes hide-back-again
+{
+	from{}
+	to
+	{
+		transform : translateX(-50px);
+	}
+}
+
+
+
+
+
+
+
+
+
 #main-page
 {
     height:700px;
