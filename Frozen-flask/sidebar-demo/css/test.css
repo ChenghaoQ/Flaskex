@@ -4,6 +4,7 @@ body
 }
 
 
+
 #sidebar-menu
 {
 	width:50px;
@@ -47,6 +48,7 @@ body
 	z-index: 99;
 	background: #e1e1e1;
 	border:1px solid black;
+	opacity: 0;
 }
 #sidebar-content .nav-con-close
 {

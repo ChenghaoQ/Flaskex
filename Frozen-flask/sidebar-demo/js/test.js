@@ -35,12 +35,10 @@
 		console.log(this);
 		this.el = document.getElementById(eventId||'sidebar');
 		this.closeBarEl = document.getElementById(closeBarId||'closeBar');
-		
 		var self = this;
 		this.sidemenu = Sidemenu();
-		this.el.addEventListener('click',function(event){
-			if(event.target !== this.closeBarEl){
-				console.log(this);
+		this.closeBarEl.addEventListener('click',function(event){
+			if(event.target !== self.closeBarEl){
 				self.switchTrigger();
 			}
 		});
