@@ -1,0 +1,171 @@
+body
+{
+	margin:0;
+}
+ul
+{
+	list-style: none;
+	padding-left:0;
+}
+
+#sidebar
+{
+	width:35px;
+	background:#e1e1e1;
+	padding-top:200px;
+	position:fixed;
+	min-height: 100%;
+	z-index: 100;
+}
+.item
+{
+	font-size:12px;
+	font-family:'Mircosoft YaHei';
+	text-align: center;
+	margin-top: 5px;
+	cursor:pointer;
+}
+
+#closeBar
+{
+	position:absolute;
+	bottom:30px;
+	width:35px;
+	text-align: center;
+	cursor:pointer;
+}
+.nav-content
+{
+	width:200px;
+	position:fixed;
+	min-height: 100%;
+	background:#e1e1e1;
+	border: 1px solid black;
+	z-index:99;
+	opacity:0;
+}
+.nav-con-close
+{
+	position:absolute;
+	top:5px;
+	right:5px;
+	cursor:pointer;
+}
+.sidebar-move-left
+{
+	animation-name: sml;
+	animation-duration: 1s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+}
+@keyframes sml
+{
+	from{
+		
+	}
+	to{
+		transform: translateX(-120px);
+	}
+}
+.closeBar-move-right
+{
+	animation-name: cmr;
+	animation-duration: 1s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+}
+@keyframes cmr
+{
+	from{
+		
+	}
+	to{
+		transform: translateX(160px) rotate(405deg) scale(1.5);
+	}
+}
+.sidebar-move-right
+{
+	animation-name: smr;
+	animation-duration: 1s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+}
+@keyframes smr
+{
+	from{
+		
+	}
+	to{
+		transform: translateX(120px);
+	}
+}
+.closeBar-move-left
+{
+	animation-name: cml;
+	animation-duration: 1s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+}
+@keyframes cml
+{
+	from{
+		transform:scale(1.5) rotate(405deg);
+	}
+	to{
+		transform: translateX(-160px) rotate(0deg) scale(1);
+	}
+}
+.menuContent-move-right
+{
+	animation-name: mmr;
+	animation-duration: .5s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+}
+@keyframes mmr
+{
+	from{
+		opacity:0;
+	}
+	to
+	{
+		opacity: 1;
+		transform:translateX(120px);
+	}
+}
+.menuContent-move-left
+{
+	animation-name: mml;
+	animation-duration: .5s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+}
+@keyframes mml
+{
+	from{
+		opacity:1;
+	}
+	to
+	{
+		opacity: 0;
+		transform:translateX(-120px);
+	}
+}
+.mennuContent-move-up
+{
+	animation-name: mmu;
+	animation-duration: .5s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+}
+@keyframes mmu
+{
+	from{
+		opacity:0;
+	}
+	to
+	{
+		opacity: 1;
+		transform:translateY(-250px);
+	}
+}

@@ -1,0 +1,40 @@
+#sidebar
+{
+	width:35px;
+	background:#e1e1e1;
+	padding-top:300px;
+	position:fixed;
+	min-height:100%;
+	left:0;
+	z-index:100;
+}
+.item
+{
+	font-size:12px;
+	font-family:'Mircosoft YaHei';
+	text-align: center;
+	margin-top: 5px;
+	cursor:pointer;
+}
+#closeBar
+{
+	position:absolute;
+	bottom:30px;
+	width:35px;
+	text-align: center;
+	cursor:pointer;
+}
+.nav-content
+{
+	width:200px;
+	position:fixed;
+	min-height: 100%;
+	background:#e1e1e1;
+	border: 1px solid black;
+}
+.nav-con-close
+{
+	position:absolute;
+	top:5px;
+	right:5px;
+}
