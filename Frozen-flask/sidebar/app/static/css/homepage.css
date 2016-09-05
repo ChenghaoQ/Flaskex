@@ -53,7 +53,7 @@ body
     cursor:pointer;
     
 }
-#sidebar-content, nav-content
+#sidebar-content
 {
     position:fixed;
     width:210px;
@@ -63,6 +63,15 @@ body
 	z-index: 99;
 	background: #222;
 
+}
+.nav-content
+{
+	position:absolute;
+    width:210px;
+	height: 100%;
+    border:1px solid black;
+	z-index: 99;
+	background: #222;
 }
 
 idebar-content .nav-con-close

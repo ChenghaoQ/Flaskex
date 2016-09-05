@@ -52,7 +52,9 @@
 		if(this.sidemenu.state === 'allClosed')
 		{
 			console.log(this.sidemenu.state);
-			this.contel.className ='hide-back-again';
+			this.contel.className ='a hide-back';
+			this.contel.removeClass;
+			this.contel.className ='a hide-back-again';
 			this.el.className ='hide-sidebar-menu';
 		}
 		else
