@@ -2,11 +2,6 @@ body
 {
     margin:0;
 
-
-}
-#wrapper
-{
-    height:100%;
 }
 #sidebar
 {
@@ -46,21 +41,21 @@ body
     margin-top: 5px;
     cursor:pointer;
 }
-#sidebar-menu #closeBar
+
+#closeBar
 {
-    width:inherit;
-    position:absolute;
-    bottom:30px;
-    text-align: center;
+	color:#777;
+	width:inherit;
+	position:absolute;
+	bottom:30px;
+	text-align: center;
     cursor:pointer;
-    color:#777;
 }
 #sidebar-content
 {
     position:fixed;
     width:210px;
 	height: 100%;
-    border:1px solid black;
     left:50px;
 	z-index: 99;
 	background: #222;
@@ -94,19 +89,33 @@ idebar-content .nav-con-close
 }
 @keyframes showbar
 {
-	from{}
+	from{
+
+	}
 	to
 	{
 		transform : translateX(50px) rotate(405deg) scale(1.5);
 	}
 }
 
-
-
-
-
-
-
+.closebar
+{
+	animation-name: closebar;
+	animation-duration: 1s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+}
+@keyframes closebar
+{
+	from
+	{
+		transform : rotate(405deg) scale(1.5);
+	}
+	to
+	{
+		transform : translateX(-35px) rotate(0deg) scale(1);
+	}
+}
 
 
 #main-page
@@ -115,9 +124,8 @@ idebar-content .nav-con-close
     background:white;
 
     margin-left:260px;
-    transition:left 2s;
+    transition:left 0.6s;
     min-height:100%;
-	
 }
 #main-page nav
 {

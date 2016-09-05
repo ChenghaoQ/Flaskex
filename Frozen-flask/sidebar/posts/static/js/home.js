@@ -72,6 +72,7 @@
 		else if(this.sidemenu.state === 'allClosed')
 		{
 			this.sidecont.animate({'left':-this.sidecont.width()});
+			console.log(this.sideme.width());
 			this.maincont.delay(500).animate({'margin-left':0});
 			this.sideme.delay(500).animate({'left':-this.sideme.width()});
 			this.sideclose.animate({'left':40});
@@ -83,6 +84,14 @@
 	};
 	Sidebar.prototype.open = function(){
 		this.state = 'opened';
+		
+		this.sideme.animate({'left':0});
+		
+		this.maincont.delay(500).animate({'margin-left':this.sideme.width()});
+		console.log('111');
+		this.sidecont.delay(2000).animate({'left':this.sideme.width()-this.sidecont.width()});
+
+		this.closeBarEl.className= 'closebar';
 		
 	};
 	Sidebar.prototype.switchTrigger = function(){
@@ -131,4 +140,3 @@
     })
 	
 })();
-
