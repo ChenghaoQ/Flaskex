@@ -34,45 +34,56 @@
 	var Sidebar = function(eventId,closeBarId,sidebarContId)
 	{
 		this.state = 'opened';
-		console.log(this);
+
 		this.el = document.getElementById(eventId||'sidebar-menu');
 		this.closeBarEl = document.getElementById(closeBarId||'closeBar');
 		this.contel = document.getElementById(sidebarContId||'sidebar-content');
 		this.sidemenu = new Sidemenu();
 		var self = this;
+		
+		this.sideme = $('#sidebar-menu');
+		this.sidecont = $('#sidebar-content');
+		this.sideclose = $('#closeBar');
+		this.maincont = $('#main-page');
 		this.closeBarEl.addEventListener('click',function(event){
 			if(event.target !== self.closeBarEl){
 				self.switchTrigger();
+				
 			}
 		});
 	};
 	Sidebar.prototype.close = function(){	
 		this.state = 'closed';
 		
-		if(this.sidemenu.state === 'allClosed')
+		if(this.sidemenu.state === 'oneOpened')
 		{
-			console.log(this.sidemenu.state);
+			/*onsole.log(this.sidemenu.state);
 			this.contel.className ='a hide-back';
-			this.contel.removeClass;
-			this.contel.className ='a hide-back-again';
-			this.el.className ='hide-sidebar-menu';
+			this.contel.className ='a hide-back-again';*/
+			this.sidecont.animate({'left':this.sideme.width()-this.sidecont.width()});
+			this.maincont.animate({'margin-left':this.sideme.width()});
+			
+			this.sidecont.animate({'left':-this.sidecont.width()});
+			this.maincont.delay(500).animate({'margin-left':0});
+			this.sideme.delay(500).animate({'left':-this.sideme.width()});
+			this.sideclose.animate({'left':40});
+			this.closeBarEl.className= 'showbar';
 		}
-		else
+		else if(this.sidemenu.state === 'allClosed')
 		{
-			this.contel.className ='hide-back';
-			this.contel.className ='hide-back-again';
-			this.el.className ='hide-sidebar-menu';
-			
-			
+			this.sidecont.animate({'left':-this.sidecont.width()});
+			this.maincont.delay(500).animate({'margin-left':0});
+			this.sideme.delay(500).animate({'left':-this.sideme.width()});
+			this.sideclose.animate({'left':40});
+			this.closeBarEl.className= 'showbar';
 		}
 
-		this.el.className ='hide-sidebar-menu';
-		this.closeBarEl.className = 'hide-closeBar';
+		
 		
 	};
 	Sidebar.prototype.open = function(){
-		console.log('bbb');
 		this.state = 'opened';
+		
 	};
 	Sidebar.prototype.switchTrigger = function(){
 		if(this.state === 'opened'){
@@ -87,10 +98,10 @@
 	
 	
 	
-	var sidebar = new Sidebar();
+	var sidebar = new Sidebar('sidebar-menu','closeBar','sidebar-content');
 	
 	
-	    var /*sidebar =$('#sidebar'),
+	var /*sidebar =$('#sidebar'),
         sidebar_trigger = $('#sidebar-trigger'),*/
         backbutton=$('.back-to-top');
         /*main_page=$('#main-page');*/
