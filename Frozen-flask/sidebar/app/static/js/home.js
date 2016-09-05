@@ -60,22 +60,25 @@
 			/*onsole.log(this.sidemenu.state);
 			this.contel.className ='a hide-back';
 			this.contel.className ='a hide-back-again';*/
-			this.sidecont.animate({'left':this.sideme.width()-this.sidecont.width()});
-			this.maincont.animate({'margin-left':this.sideme.width()});
+			this.sidecont.animate({'left':this.sideme.width()-this.sidecont.width()},{duration:500});
+			this.maincont.animate({'margin-left':this.sideme.width()},{duration:500});
 			
-			this.sidecont.animate({'left':-this.sidecont.width()});
-			this.maincont.delay(500).animate({'margin-left':0});
-			this.sideme.delay(500).animate({'left':-this.sideme.width()});
-			this.sideclose.animate({'left':40});
+			this.sidecont.animate({'left':-this.sidecont.width()},{duration:500});
+			this.maincont.delay(500).animate({'margin-left':0},{duration:500});
+			this.sideme.delay(500).animate({'left':-this.sideme.width()},{duration:500});
+			this.sideclose.animate({'left':40},{duration:500});
 			this.closeBarEl.className= 'showbar';
 		}
 		else if(this.sidemenu.state === 'allClosed')
 		{
-			this.sidecont.animate({'left':-this.sidecont.width()});
+			this.sidecont.animate({'left':-this.sidecont.width()},{duration:500});
 			console.log(this.sideme.width());
-			this.maincont.delay(500).animate({'margin-left':0});
-			this.sideme.delay(500).animate({'left':-this.sideme.width()});
-			this.sideclose.animate({'left':40});
+			
+			
+			this.maincont.animate({'margin-left':0},{duration:700,queue:false});
+			
+			this.sideme.delay(300).animate({'left':-this.sideme.width()},{duration:200});
+			this.sideclose.animate({'left':40},{duration:500});
 			this.closeBarEl.className= 'showbar';
 		}
 
