@@ -9,28 +9,52 @@
 		this.el.addEventListener('click',function(evt){
 			evt.stopPropagation();
 		});
-		var self = this;
+		/*animation*/
+		this.sidecont = $('#sidebar-content');
+		this.maincont = $('#main-page');
+		
 		this.menuList = document.querySelectorAll('#sidebar-menu ul>li');
+		var self = this;
 		for(var i = 0;i<this.menuList.length;i++)
 		{
-			this.menuList[i].addEventListener('click',function(evt){
+			this.menuList[i].addEventListener('click',function(evt)
+			{
 				
-				var menuContEl = document.getElementById(evt.currentTarget.id+'-content');
-				console.log(menuContEl);
+				var sidecontel = '#'+evt.currentTarget.id+'-content',
+					menuContEl = $('#'+evt.currentTarget.id+'-content');
+				/*document.getElementById(evt.currentTarget.id+'-content');*/
+
+
 				if(self.state === 'allClosed'){
 					console.log('open'+menuContEl.id);
+					self.sidecont.animate({'left':50},{duration:500,queue:false});
+					self.maincont.animate({'margin-left':260},{duration:500,queue:false});
+					/*menuContEl.delay(800).fadeIn(500);*/
+
 					self.state = 'oneOpened';
 					self.MenuContNow = menuContEl;
 				}
-				else{
-					console.log('close'+self.MenuContNow.id);
+				if(self.state === 'oneOpened')
+				{
+					
+
+					self.MenuContNow.fadeOut(500);
+					menuContEl.delay(500).fadeIn(500);
 					console.log('open'+menuContEl.id);
 					self.state ='oneOpened';
 					self.MenuContNow = menuContEl;
 				}
+				
+				
 			});	
 		}
-	}
+		$('.nav-con-close').on('click',function(){
+					self.sidecont.animate({'left':-210},{duration:500,queue:false});
+					self.maincont.animate({'margin-left':50},{duration:500,queue:false});
+					self.state = 'allClosed';
+				});
+		
+	};
 	var Sidebar = function(eventId,closeBarId,sidebarContId)
 	{
 		this.state = 'opened';
@@ -71,14 +95,13 @@
 		}
 		else if(this.sidemenu.state === 'allClosed')
 		{
-			this.sidecont.animate({'left':-this.sidecont.width()},{duration:500});
+			this.sidecont.animate({'left':-this.sidecont.width()},{duration:500,queue:false});
 			console.log(this.sideme.width());
 			
 			
-			this.maincont.animate({'margin-left':0},{duration:700,queue:false});
+			this.maincont.animate({'margin-left':0},{duration:800,queue:false});
 			
-			this.sideme.delay(300).animate({'left':-this.sideme.width()},{duration:200});
-			this.sideclose.animate({'left':40},{duration:500});
+			this.sideme.delay(500).animate({'left':-this.sideme.width()},{duration:500});
 			this.closeBarEl.className= 'showbar';
 		}
 
@@ -88,11 +111,11 @@
 	Sidebar.prototype.open = function(){
 		this.state = 'opened';
 		
-		this.sideme.animate({'left':0});
+		this.sideme.animate({'left':0},{duration:300,queue:false});
 		
-		this.maincont.delay(500).animate({'margin-left':this.sideme.width()});
+		this.maincont.delay(500).animate({'margin-left':this.sideme.width()},{duration:300,queue:false});
 		console.log('111');
-		this.sidecont.delay(2000).animate({'left':this.sideme.width()-this.sidecont.width()});
+		this.sidecont.delay(1000).animate({'left':this.sideme.width()-this.sidecont.width()},{duration:0});
 
 		this.closeBarEl.className= 'closebar';
 		
