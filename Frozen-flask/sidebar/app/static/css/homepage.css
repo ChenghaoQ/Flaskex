@@ -90,11 +90,28 @@ body
 {
 
     position:absolute;
-    top:5px;
+    top:15px;
     right:5px;
     cursor:pointer;
+    font-size: 20px;
 }
 
+#sidebar-content .nav-con-title
+{
+    padding:15px 0;
+    font-size:20px;
+    font-weight:400;
+    text-align:center;
+}
+#sidebar-content .inner-content ul
+{
+    list-style: none;
+    padding-left:25px;
+}
+.inner-content ul li
+{
+    padding:10px;
+}
 .showbar
 {
 	animation-name: showbar;
@@ -296,4 +313,17 @@ footer .share-group li a
     border-radius: 10px;
     padding-left:15px;
     width:inherit;
+}
+a {
+  color: #308bd9;
+  text-decoration: none;
+}
+a:hover,
+a:focus {
+  color: #347cbc;
+  text-decoration: underline;
+}
+a:focus {
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
 }

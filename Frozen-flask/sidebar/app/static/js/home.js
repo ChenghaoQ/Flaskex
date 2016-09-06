@@ -8,15 +8,14 @@
             
 		maincont.animate({'margin-left':sideme.width()},{duration:500,queue:false});
     }
-    function hidesidemenu(sidecont,maincont,sideme)
+    function hidesidemenu(sidecont,maincont,sideme,closeBarEl)
     {
-        sidecont.animate({'left':-sidecont.width()},{duration:0,queue:false});
-
-			
-			
+        sidecont.animate({'left':-sidecont.width()},{duration:0});
+        console.log('ccc');
         maincont.animate({'margin-left':0},{duration:500,queue:false});
 			
         sideme.animate({'left':-sideme.width()},{duration:500,queue:false});
+        closeBarEl.className= 'showbar';
     }
     
     
@@ -98,20 +97,21 @@
 			/*this.sidecont.animate({'left':this.sideme.width()-this.sidecont.width()},{duration:500});
             
 			this.maincont.animate({'margin-left':this.sideme.width()},{duration:500});*/
-			/*hidesidecontent(this.sidecont,this.maincont,this.sideme);*/
-           
-            hidesidemenu(this.sidecont,this.maincont,this.sideme);
+			/*hidesidecontent(this.sidecont,this.maincont,this.sideme);
+            console.log('aaa');
+            /*this.sidecont.animate({'left':-this.sidecont.width()},{duration:0,queue:false});*/
+            hidesidemenu(this.sidecont,this.maincont,this.sideme,this.closeBarEl);
 			/*this.sidecont.animate({'left':-this.sidecont.width()},{duration:500});
-			this.maincont.delay(500).animate({'margin-left':0},{duration:500});
+			this.maincont.delay(500)..animate({'margin-left':0},{duration:500});
             
 			this.sideme.delay(500).animate({'left':-this.sideme.width()},{duration:500});
 			this.sideclose.animate({'left':40},{duration:500});*/
-            this.closeBarEl.className= 'showbar';
+            /*this.closeBarEl.className= 'showbar';*/
             this.sidemenu.state = 'allClosed';
 		}
 		else if(this.sidemenu.state === 'allClosed')
 		{
-            hidesidemenu(this.sidecont,this.maincont,this.sideme);
+            hidesidemenu(this.sidecont,this.maincont,this.sideme,this.closeBarEl);
 			/*this.sidecont.animate({'left':-this.sidecont.width()},{duration:0,queue:false});
 			console.log(this.sideme.width());
 			
@@ -119,7 +119,7 @@
 			this.maincont.animate({'margin-left':0},{duration:800,queue:false});
 			
 			this.sideme.animate({'left':-this.sideme.width()},{duration:500,queue:false});*/
-			this.closeBarEl.className= 'showbar';
+			/*this.closeBarEl.className= 'showbar';*/
 		}
 
 		
@@ -150,11 +150,8 @@
 	
 	
 	
-	var sidebar = new Sidebar('sidebar-menu','closeBar','sidebar-content');
 	
-	
-	var /*sidebar =$('#sidebar'),
-        sidebar_trigger = $('#sidebar-trigger'),*/
+	var /*sidebar = new Sidebar('sidebar-menu','closeBar','sidebar-content'),*/
         backbutton=$('.back-to-top');
         /*main_page=$('#main-page');*/
     function backback()
@@ -172,14 +169,15 @@
             backbutton.fadeOut();
     }
 	
-    $(function(){
-        if($(window).width()>1024){
-            /*$(function(){setTimeout(hideSideBar,600)});
-            sidebar_trigger.on('click',showhideSideBar);*/
-            backbutton.on('click',backback);
-            $(window).on('scroll',hidebutton);
-            $(window).trigger('scroll');
-        }
-    })
+
+    if($(window).width()>1024){
+        sidebar = new Sidebar('sidebar-menu','closeBar','sidebar-content');
+        /*$(function(){setTimeout(hideSideBar,600)});
+        sidebar_trigger.on('click',showhideSideBar);*/
+        backbutton.on('click',backback);
+        $(window).on('scroll',hidebutton);
+        $(window).trigger('scroll');
+    }
+    
 	
 })();
