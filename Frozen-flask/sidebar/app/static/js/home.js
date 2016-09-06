@@ -25,7 +25,7 @@
 
 				if(self.state === 'allClosed'){
 					self.sidecont.animate({'left':50},{duration:500,queue:false});
-					self.maincont.animate({'margin-left':260},{duration:500,queue:false});
+					self.maincont.animate({'margin-left':300},{duration:500,queue:false});
 					/*menuContEl.delay(800).fadeIn(500);*/
 
 					self.state = 'oneOpened';
@@ -42,7 +42,7 @@
 			});	
 		}
 		$('.nav-con-close').on('click',function(){
-					self.sidecont.animate({'left':-210},{duration:500,queue:false});
+					self.sidecont.animate({'left':-250},{duration:500,queue:false});
 					self.maincont.animate({'margin-left':50},{duration:500,queue:false});
 					self.state = 'allClosed';
 				});
@@ -88,13 +88,13 @@
 		}
 		else if(this.sidemenu.state === 'allClosed')
 		{
-			this.sidecont.animate({'left':-this.sidecont.width()},{duration:500,queue:false});
+			this.sidecont.animate({'left':-this.sidecont.width()},{duration:0,queue:false});
 			console.log(this.sideme.width());
 			
 			
 			this.maincont.animate({'margin-left':0},{duration:800,queue:false});
 			
-			this.sideme.delay(500).animate({'left':-this.sideme.width()},{duration:500});
+			this.sideme.animate({'left':-this.sideme.width()},{duration:500,queue:false});
 			this.closeBarEl.className= 'showbar';
 		}
 
