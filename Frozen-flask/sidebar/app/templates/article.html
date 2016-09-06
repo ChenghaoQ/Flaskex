@@ -3,6 +3,7 @@
 <link rel='stylesheet' media="screen and (min-width:1025px)"  href='../../static/css/homepage.css'>
 <link rel='stylesheet' href='../../static/css/normalize.css'>
 <link rel='stylesheet' href='../../static/css/monokai.css'>
+<link rel='stylesheet' href='../../static/css/bootstrap.css'>	
 <link rel='stylesheet' media="screen and (min-width:1025px)"  href='../../static/css/article.css'>
 
 <link rel='stylesheet' media="screen and (max-width:1024px)"  href='../../static/icss/ihomepage.css'>
@@ -21,12 +22,29 @@
 	</article>
 {% endblock %}
 
-{% block sidebar %}
-	<ul>
-	{% for item in page.sidebar %}
-		<li><a href='#{{ item.value.id }}'>{{ item.value.title }}</a></li>
-	{% endfor %}
-	</ul>
+{% block sidebar_menu %}
+<li id="catalog" class="item">
+    <span class="glyphicon glyphicon-list"></span>
+    <div>目录</div>
+</li>
+
+{% endblock %}
+
+{% block sidebarcontent %}
+
+<div class="nav-content" id="catalog-content">
+    <div class="nav-con-close">
+        <span class='glyphicon glyphicon-chevron-left'></span>
+    </div>
+    <div>我</div>
+    <div class="inner-content">
+        <ul>
+	    {% for item in page.sidebar %}
+		    <li><a href='#{{ item.value.id }}'>{{ item.value.title }}</a></li>
+	    {% endfor %}
+	    </ul>
+    </div>
+</div>
 {% endblock %}
 
 {% block js %}
