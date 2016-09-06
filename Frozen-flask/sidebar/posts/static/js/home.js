@@ -2,6 +2,24 @@
 
 (function()
 {
+    function hidesidecontent(sidecont,maincont,sideme)
+    {
+        sidecont.animate({'left':sideme.width()-sidecont.width()},{duration:500,queue:false});
+            
+		maincont.animate({'margin-left':sideme.width()},{duration:500,queue:false});
+    }
+    function hidesidemenu(sidecont,maincont,sideme)
+    {
+        sidecont.animate({'left':-sidecont.width()},{duration:0,queue:false});
+
+			
+			
+        maincont.animate({'margin-left':0},{duration:500,queue:false});
+			
+        sideme.animate({'left':-sideme.width()},{duration:500,queue:false});
+    }
+    
+    
 	var Sidemenu = function()
 	{
 		this.el = document.querySelector('#sidebar-menu ul');
@@ -77,24 +95,30 @@
 			/*onsole.log(this.sidemenu.state);
 			this.contel.className ='a hide-back';
 			this.contel.className ='a hide-back-again';*/
-			this.sidecont.animate({'left':this.sideme.width()-this.sidecont.width()},{duration:500});
-			this.maincont.animate({'margin-left':this.sideme.width()},{duration:500});
-			
-			this.sidecont.animate({'left':-this.sidecont.width()},{duration:500});
+			/*this.sidecont.animate({'left':this.sideme.width()-this.sidecont.width()},{duration:500});
+            
+			this.maincont.animate({'margin-left':this.sideme.width()},{duration:500});*/
+			/*hidesidecontent(this.sidecont,this.maincont,this.sideme);*/
+           
+            hidesidemenu(this.sidecont,this.maincont,this.sideme);
+			/*this.sidecont.animate({'left':-this.sidecont.width()},{duration:500});
 			this.maincont.delay(500).animate({'margin-left':0},{duration:500});
+            
 			this.sideme.delay(500).animate({'left':-this.sideme.width()},{duration:500});
-			this.sideclose.animate({'left':40},{duration:500});
-			this.closeBarEl.className= 'showbar';
+			this.sideclose.animate({'left':40},{duration:500});*/
+            this.closeBarEl.className= 'showbar';
+            this.sidemenu.state = 'allClosed';
 		}
 		else if(this.sidemenu.state === 'allClosed')
 		{
-			this.sidecont.animate({'left':-this.sidecont.width()},{duration:0,queue:false});
+            hidesidemenu(this.sidecont,this.maincont,this.sideme);
+			/*this.sidecont.animate({'left':-this.sidecont.width()},{duration:0,queue:false});
 			console.log(this.sideme.width());
 			
 			
 			this.maincont.animate({'margin-left':0},{duration:800,queue:false});
 			
-			this.sideme.animate({'left':-this.sideme.width()},{duration:500,queue:false});
+			this.sideme.animate({'left':-this.sideme.width()},{duration:500,queue:false});*/
 			this.closeBarEl.className= 'showbar';
 		}
 
