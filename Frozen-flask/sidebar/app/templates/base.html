@@ -61,9 +61,11 @@
             
             
             <div class="back-to-top">
-            	<span class="glyphicon glyphicon-chevron-up"></span>
+            	<span class="glyphicon glyphicon-chevron-left"></span>
             </div>
-
+            <div id="closeBar">
+                <span class="glyphicon glyphicon-remove"></span>
+            </div>
         
         </div>
           
@@ -81,9 +83,7 @@
                	<ul>
                	    {% block sidebar_menu %}{% endblock %}
                	 </ul>
-                <div id="closeBar">
-                    <span class="glyphicon glyphicon-remove"></span>
-                </div>
+                
             </div>
             <div id="sidebar-content" >
                 {% block sidebarcontent %}{% endblock %}
