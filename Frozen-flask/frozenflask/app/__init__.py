@@ -16,11 +16,11 @@ freezer = Freezer(app)
 #after initialize import views
 #from app import views
 
-from .view.index import index
+#from .view.index import index
 from .view.postwall import postwall
 from .view.article import article
 
 #注册蓝图
-app.register_blueprint(index)
+#app.register_blueprint(index)
 app.register_blueprint(postwall)
 app.register_blueprint(article)
