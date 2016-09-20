@@ -11,7 +11,6 @@ def posts():
 	posts=[]
 
 	for article in articles:
-		print(article.meta)
 		if 'date' in article.meta:
 			posts.append(article)
 			
