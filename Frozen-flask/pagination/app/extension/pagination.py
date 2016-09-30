@@ -1,9 +1,11 @@
+import math
 class Pagination(object):
 	
 	def __init__(self,page,per_page,iterable):
 		self.page = page
 		self.per_page = per_page
 		self.iterable = iterable
+		self.total = len(iterable)
 		
 	@property
 	def total_pages(self):
@@ -16,6 +18,10 @@ class Pagination(object):
 	@property
 	def has_next(self):
 		return self.page < self.total_pages
+	
+	@property
+	def pager(self):
+		return list(range(1,self.total_pages+1))
 	
 	@property
 	def items(self):

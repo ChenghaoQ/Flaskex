@@ -5,7 +5,7 @@ from flask_flatpages import pygmented_markdown
 from app.extension import pagination as Pag
 postwall = Blueprint('postwall',__name__)
 
-@postwall.route('/')
+@postwall.route('/',defaults={'page':1})
 #@postwall.route('/page/<int:page>')
 def posts():
 	#posts = [article for article in articles if 'date' in article.meta]
@@ -20,8 +20,8 @@ def posts():
 	
 	sorted_posts = sorted(posts,reverse = True,key = lambda page:page.meta['date'])#Because of key is date, so in .md file date cannot be write in wrong format like Date
 	#pages may related to template index.html
-	show_posts_obj = Pag.Pagination(1,PER_PAGE,sorted_posts)
-	return render_template('index.html',pagination = show_posts_obj)
+	pager_obj = Pag.Pagination(1,PER_PAGE,sorted_posts)
+	return render_template('index.html',pagination = pager_obj)
 
 
 @app.template_filter('excerpt')
