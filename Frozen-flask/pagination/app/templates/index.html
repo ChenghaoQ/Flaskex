@@ -26,7 +26,6 @@ Posts
 			<div class="more link_tag"><a href="{{ url_for('article.page', path=page.path) }}">More -></a></div>
 		</li>
 	{% endfor %}
-	<hr>
 	{% import "pagination.html" as Pag %}
 	{{Pag.pager(pagination)}}
 </ul>

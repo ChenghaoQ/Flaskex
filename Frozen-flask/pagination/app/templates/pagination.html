@@ -1,9 +1,9 @@
 {% macro pager(pagination) %}
     <div class="pagination">
 		{% if pagination.has_prev %}
-    		<div class ="page_prev"><a href ="{{url_for('postwall.posts',page= pagination.page-1)}}">&laquo</a></div>
+    		<div class ="prev_next"><a href ="{{url_for('postwall.posts',page= pagination.page-1)}}">&laquo</a></div>
 		{% endif %}
-		<ul>
+		<ul class='pager'>
 			{% for page_num in pagination.pager%}
 				{% if page_num == pagination.page %}
 					<li><b>{{page_num}}</b></li>
@@ -15,7 +15,7 @@
 		
 		
 		{% if pagination.has_next %}
-		<div class ="page_next"><a href ="{{url_for('postwall.posts',page= pagination.page+1)}}">&raquo</a></div>
+		<div class ="prev_next"><a href ="{{url_for('postwall.posts',page= pagination.page+1)}}">&raquo</a></div>
 		{% endif %}
     </div>
 {% endmacro %}

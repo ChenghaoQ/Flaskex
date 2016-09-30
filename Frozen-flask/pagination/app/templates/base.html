@@ -4,6 +4,11 @@
         <meta charset='utf-8'>
         <title>{% block title %} {% endblock %}|| ChenghaoQ</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<link rel='stylesheet' href='{{asset.css.normalize}}'>
+		<link rel='stylesheet' href="{{asset.css.monokai}}">
+		<link rel='stylesheet' href='{{asset.css.bootstrap}}'>
+		<link rel='stylesheet' media="screen and (min-width:1024px)"  href='{{asset.css.homepage}}'>
+		<link rel='stylesheet' media="screen and (max-width:1024px)"  href='{{asset.icss.ihomepage}}'>
         {% block css %}{% endblock %}
         <script>
               (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -30,7 +35,7 @@
                     <ul class="menu">
                         
                            
-                        <li><a href='#'>文章</a></li> 
+                        <li><a href='{{url_for("postwall.posts")}}'>文章</a></li> 
                         <li><a href='#'>归档</a></li> 
                         <li><a href='#'>关于</a></li>           
                     </ul>
