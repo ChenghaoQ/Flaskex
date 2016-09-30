@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% block css %}
-<link rel='stylesheet' media="screen and (min-width:1025px)"  href='../../static/css/homepage.css'>
-<link rel='stylesheet' href='../../static/css/normalize.css'>
-<link rel='stylesheet' href='../../static/css/monokai.css'>
-<link rel='stylesheet' href='../../static/css/bootstrap.css'>	
-<link rel='stylesheet' media="screen and (min-width:1025px)"  href='../../static/css/article.css'>
+<link rel='stylesheet' media="screen and (min-width:1025px)"  href='{{asset.css.homepage}}'>
+<link rel='stylesheet' href='{{asset.css.normalize}}'>
+<link rel='stylesheet' href='{{asset.css.monokai}}'>
+<link rel='stylesheet' href='{{asset.css.bootstrap}}'>	
+<link rel='stylesheet' media="screen and (min-width:1025px)"  href='{{asset.icss.article}}'>
 
-<link rel='stylesheet' media="screen and (max-width:1024px)"  href='../../static/icss/ihomepage.css'>
-<link rel='stylesheet' media="screen and (max-width:1024px)"  href='../../static/icss/iarticle.css'>
+<link rel='stylesheet' media="screen and (max-width:1024px)"  href='{{asset.icss.ihomepage}}'>
+<link rel='stylesheet' media="screen and (max-width:1024px)"  href='{{asset.icss.iarticle}}'>
 
 {% endblock %}
 
@@ -56,9 +56,9 @@
 {% endblock %}
 
 {% block js %}
-        <script src="../../static/js/jquery.js"></script>
-        <script src="../../static/js/home.js"></script>
-        <script src="../../static/ijs/ihome.js"></script>
+        <script src="{{asset.js.jquery}}"></script>
+        <script src="{{asset.js.home}}"></script>
+        <script src="{{asset.ijs.ihome}}"></script>
         
         <script type="text/javascript" src="http://assets.vicomi.com/assets/widgets_static.js"></script>
 

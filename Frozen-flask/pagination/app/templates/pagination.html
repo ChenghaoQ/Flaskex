@@ -5,8 +5,8 @@
 		{% endif %}
 		<ul>
 			{% for page_num in pagination.pager%}
-				{% if page_num == 1 %}
-					<li><a href ="{{url_for('postwall.posts')}}">{{page_num}}</a></li>
+				{% if page_num == pagination.page %}
+					<li><b>{{page_num}}</b></li>
 				{% else %}
 					<li><a href ="{{url_for('postwall.posts',page= page_num)}}">{{page_num}}</a></li>
 				{% endif %}
