@@ -5,7 +5,7 @@
 		{% endif %}
 
 		{% if pagination.has_next %}
-		<div class ="page_next"><a href = '#'></a>{{pagination.page}}</div>
+		<div class ="page_next"><a href ="{{url_for('postwall.posts',page= pagination.page+1)}}"></a>{{pagination.page}}</div>
 		{% endif %}
     </div>
 {% endmacro %}

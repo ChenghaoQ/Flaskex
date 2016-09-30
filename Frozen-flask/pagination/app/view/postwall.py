@@ -5,12 +5,12 @@ from flask_flatpages import pygmented_markdown
 from app.extension import pagination as Pag
 postwall = Blueprint('postwall',__name__)
 
-@postwall.route('/',defaults={'page':1})
-#@postwall.route('/page/<int:page>')
-def posts():
+@postwall.route('/')
+@postwall.route('/page/<int:page>/')
+def posts(page=1):
 	#posts = [article for article in articles if 'date' in article.meta]
 	posts=[]
-	page=1
+	#page=1
 	PER_PAGE = 6
 	for article in articles:
 		if 'date' in article.meta:
