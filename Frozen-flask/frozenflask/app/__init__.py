@@ -19,8 +19,9 @@ freezer = Freezer(app)
 #from .view.index import index
 from .view.postwall import postwall
 from .view.article import article
-
+from .view.copyright import copyright
 #注册蓝图
 #app.register_blueprint(index)
 app.register_blueprint(postwall)
 app.register_blueprint(article)
+app.register_blueprint(copyright)
